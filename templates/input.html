@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form - Insurance Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class "container">
+        <h2>Enter Your Details</h2>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" required>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI:</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="children">Number of Children:</label>
+                <input type="number" id="children" name="children" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="smoker">Smoker:</label>
+                <select id="smoker" name="smoker" required>
+                    <option value="0">Yes</option>
+                    <option value="1">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <select id="region" name="region" required>
+                    <option value="0">Southeast</option>
+                    <option value="1">Southwest</option>
+                    <option value="2">Northwest</option>
+                    <option value="3">Northeast</option>
+                </select>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
