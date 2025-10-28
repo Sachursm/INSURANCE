@@ -3,94 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Form - Insurance Prediction</title>
+    <title>Insurance Prediction - Get Your Estimate</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
         }
+
         .container {
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 400px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
         }
-        h2 {
+
+        .header {
             text-align: center;
+            margin-bottom: 35px;
         }
+
+        .header h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
         }
+
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
         }
+
         input, select {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
         }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        input:hover, select:hover {
+            border-color: #667eea;
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23667eea' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
         button {
             width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
         button:hover {
-            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .input-icon {
+            position: relative;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .header h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* Add subtle animation on load */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeIn 0.5s ease;
         }
     </style>
 </head>
 <body>
-    <div class "container">
-        <h2>Enter Your Details</h2>
+    <div class="container">
+        <div class="header">
+            <h2>Insurance Cost Predictor</h2>
+            <p>Enter your details to get an estimated insurance cost</p>
+        </div>
         <form action="/predict" method="POST">
             <div class="form-group">
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age" required min="0">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required min="0" max="120" placeholder="Enter your age">
             </div>
+            
             <div class="form-group">
-                <label for="sex">Sex:</label>
+                <label for="sex">Gender</label>
                 <select id="sex" name="sex" required>
+                    <option value="">Select gender</option>
                     <option value="0">Male</option>
                     <option value="1">Female</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label for="bmi">BMI:</label>
-                <input type="number" id="bmi" name="bmi" step="0.1" required min="0">
+                <label for="bmi">BMI (Body Mass Index)</label>
+                <input type="number" id="bmi" name="bmi" step="0.1" required min="10" max="60" placeholder="e.g., 25.5">
             </div>
+            
             <div class="form-group">
-                <label for="children">Number of Children:</label>
-                <input type="number" id="children" name="children" required min="0">
+                <label for="children">Number of Children</label>
+                <input type="number" id="children" name="children" required min="0" max="10" placeholder="0">
             </div>
+            
             <div class="form-group">
-                <label for="smoker">Smoker:</label>
+                <label for="smoker">Smoking Status</label>
                 <select id="smoker" name="smoker" required>
+                    <option value="">Select status</option>
                     <option value="0">Yes</option>
                     <option value="1">No</option>
                 </select>
             </div>
+            
             <div class="form-group">
-                <label for="region">Region:</label>
+                <label for="region">Region</label>
                 <select id="region" name="region" required>
+                    <option value="">Select region</option>
                     <option value="0">Southeast</option>
                     <option value="1">Southwest</option>
                     <option value="2">Northwest</option>
                     <option value="3">Northeast</option>
                 </select>
             </div>
-            <button type="submit">Predict</button>
+            
+            <button type="submit">Get Prediction</button>
         </form>
     </div>
 </body>
