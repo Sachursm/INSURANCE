@@ -109,4 +109,46 @@ The model is trained in model.py and saved as insurance_model.pkl, which is load
 ![image alt](https://github.com/Sachursm/INSURANCE/blob/master/input.png?raw=true)
 
 📊 Prediction Output Page
-![image alt]()
+![image alt](https://github.com/Sachursm/INSURANCE/blob/master/output.png?raw=true)
+
+
+📦 Requirements
+
+Dependencies are listed in requirements.txt:
+
+```nginx
+flask
+numpy
+pandas
+scikit-learn
+```
+🧩 How It Works
+
+The user fills out their details (Age, Gender, BMI, etc.)
+
+Flask sends the input data to the trained ML model
+
+The model predicts the estimated insurance cost
+
+The result is displayed beautifully on the output page
+
+🧾 Example Prediction
+Input	Output
+Age: 15, Gender: Male, BMI: 22, Children: 0, Smoker: No, Region: Southwest	💰 Predicted Cost: $1383.12
+
+---
+🧑‍💻 Author
+
+👤 Sachu Retna SM
+
+📧 Email: sachuretnasm@gmail.com
+---
+🛡️ License
+
+This project is open-source under the MIT License.
+
+Feel free to use, modify, and share!
+
+---
+
+⭐ If you found this project helpful, don’t forget to star the repo!
