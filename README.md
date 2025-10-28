@@ -101,7 +101,9 @@ The model is trained in model.py and saved as insurance_model.pkl, which is load
 ---
 
 🖼️ App Screenshots
+
 🏠 Welcome Page
+![image alt](https://github.com/Sachursm/INSURANCE/blob/master/welcome.png?raw=true)
 
 🧾 Input Form Page
 
