@@ -2,10 +2,8 @@ import numpy as np
 from flask import Flask, request, render_template
 from model import load_model
 
-app = Flask(__name__)
-
-# Load the model
 model = load_model()
+app = Flask(__name__)
 
 @app.route('/')
 def welcome():
